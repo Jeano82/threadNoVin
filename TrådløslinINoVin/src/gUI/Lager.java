@@ -51,25 +51,27 @@ public class Lager extends JFrame {
 		table = new JTable();
 		table.setFillsViewportHeight(true);
 		table.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		table.setModel(
-				new DefaultTableModel(new Object[][] {}, new String[] { "Product ID", "Navn", "Alcohol %", "Land", "cl",
-						"v\u00E6gt for fuld palle", "v\u00E6gt for kasse", "p\u00E5 Lager", "kasser at flytte" }) {
-					Class[] columnTypes = new Class[] { Object.class, String.class, Double.class, String.class,
-							Double.class, Object.class, Object.class, Boolean.class, Integer.class };
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Product ID", "Navn", "Alcohol %",
+				"Land", "cl", "vægt for fuld palle", "vægt for kasse", "på Lager", "kasser at flytte" }) {
+			/**
+					 * 
+					 */
+			private static final long serialVersionUID = 1L;
+			Class[] columnTypes = new Class[] { Object.class, String.class, Double.class, String.class, Double.class,
+					Object.class, Object.class, Boolean.class, Integer.class };
 
-					@Override
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
+			@Override
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
 
-					boolean[] columnEditables = new boolean[] { true, false, false, false, false, false, false, false,
-							true };
+			boolean[] columnEditables = new boolean[] { false, false, false, false, false, false, false, false, true };
 
-					@Override
-					public boolean isCellEditable(int row, int column) {
-						return columnEditables[column];
-					}
-				});
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		scrollPane.setViewportView(table);
 	}
 
